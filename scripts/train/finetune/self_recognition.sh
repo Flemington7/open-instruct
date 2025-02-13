@@ -42,7 +42,7 @@ accelerate launch \
     --logging_steps 1 \
     --reduce_loss sum \
     --model_revision main \
-    --dataset_mixer_list allenai/tulu-3-hard-coded-10x 100 \
+    --dataset_mixer_list Flemington7/autox-hard-coded-10x 100 \
     --checkpointing_steps epoch \
     --dataset_mix_dir output/sft_8b \
     --exp_name self-recognition-llama \
