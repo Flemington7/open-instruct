@@ -54,6 +54,9 @@ RUN mkdir -p /root/miniconda3 && \
 # Initialize conda so that the shell (e.g. when running bash -l) will have conda activated.
 RUN /bin/bash -c "source /root/miniconda3/bin/activate && conda init --all"
 
+# Add conda to the PATH
+ENV PATH="/root/miniconda3/bin:/root/miniconda3/condabin:${PATH}"
+
 # Install a few additional utilities via pip
 RUN pip install --no-cache-dir gpustat jupyter oocmap
 
