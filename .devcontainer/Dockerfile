@@ -1,6 +1,5 @@
-# Run the following command to build `ghcr.io/allenai/oi-cuda-no-conda:12.1-cudnn8-dev-ubuntu20.04`
-# docker build --build-arg CUDA=12.1.0 --build-arg TARGET=cudnn8-devel --build-arg DIST=ubuntu20.04 -f .devcontainer/Dockerfile -t cuda12.1-cudnn8-dev-ubuntu20.04 .
-
+# Run the following command to build `flemington7/self-recognition:latest`
+# docker build -f .devcontainer/Dockerfile -t flemington7/self-recognition:latest .
 ARG CUDA=12.1.0
 ARG DIST=ubuntu20.04
 ARG TARGET=cudnn8-devel
@@ -56,9 +55,6 @@ RUN /bin/bash -c "source /root/miniconda3/bin/activate && conda init --all"
 
 # Add conda to the PATH
 ENV PATH="/root/miniconda3/bin:/root/miniconda3/condabin:${PATH}"
-
-# Install a few additional utilities via pip
-RUN pip install --no-cache-dir gpustat jupyter oocmap
 
 WORKDIR /workspace
 
