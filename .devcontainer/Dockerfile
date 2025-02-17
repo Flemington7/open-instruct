@@ -66,6 +66,9 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 RUN python -m nltk.downloader punkt
 
+# Clean up APT cache to reduce image size
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
 COPY open_instruct open_instruct
 
 # install the package in editable mode
