@@ -75,7 +75,6 @@ COPY .git/ ./.git/
 COPY eval eval
 COPY configs configs
 COPY scripts scripts
-COPY datasets datasets
 COPY mason.py mason.py
 RUN chmod +x scripts/*
 
