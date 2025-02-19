@@ -10,6 +10,9 @@ NUM_PROCESSES=4
 PER_DEVICE_TRAIN_BATCH_SIZE=1
 GRADIENT_ACCUMULATION_STEPS=4
 
+# Configure the PyTorch memory management to avoid fragmentation
+export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
+
 # Run the training script using the "accelerate" launcher
 accelerate launch \
     --mixed_precision bf16 \
