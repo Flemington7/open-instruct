@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Set environment variables for GPU and other configurations
-export CUDA_VISIBLE_DEVICES=0,1,2,3
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 
 MACHINE_RANK=0
 MAIN_PROCESS_IP=localhost
 NUM_MACHINES=1
-NUM_PROCESSES=4
+NUM_PROCESSES=8
 PER_DEVICE_TRAIN_BATCH_SIZE=1
-GRADIENT_ACCUMULATION_STEPS=4
+GRADIENT_ACCUMULATION_STEPS=16
 
 # Configure the PyTorch memory management to avoid fragmentation
 export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
@@ -29,7 +29,8 @@ accelerate launch \
     --tokenizer_name meta-llama/Llama-3.1-8B \
     --use_slow_tokenizer False \
     --use_flash_attn False \
-    --max_seq_length 1024 \
+    --max_seq_length 256 \
+    --use_lora \
     --preprocessing_num_workers 8 \
     --per_device_train_batch_size $PER_DEVICE_TRAIN_BATCH_SIZE \
     --gradient_accumulation_steps $GRADIENT_ACCUMULATION_STEPS \
